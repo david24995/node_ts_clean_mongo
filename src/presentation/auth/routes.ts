@@ -5,7 +5,7 @@ import { AuthService } from '../services/auth.service';
 export class AuthRoutes {
   static get routes(): Router {
     const router = Router();
-    const authService = new AuthService()
+    const authService = new AuthService();
     const controller = new AuthControlelr(authService);
 
     // Definir las rutas
