@@ -8,6 +8,7 @@ export class JwtAdapter {
     payload: { [key: string]: any },
     duration: string = '2h'
   ) {
+    1;
     return new Promise((resolve) => {
       jwt.sign(
         payload,
@@ -23,6 +24,11 @@ export class JwtAdapter {
   }
 
   static validateToken(token: string) {
-    throw 'Not implemented!';
+    return new Promise((resolve) => {
+      jwt.verify(token, JWT_SEED, (err, decoded) => {
+        if (err) return resolve(null);
+        resolve(decoded);
+      });
+    });
   }
 }
