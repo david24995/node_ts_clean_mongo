@@ -19,7 +19,10 @@ export class ProductController {
     if (error) return res.status(400).json({ error });
 
     this.productService
-      .createProduct(createProductDto!)
+      .createProduct({
+        ...createProductDto!,
+        user: req.body.user.id
+      })
       .then((product) => res.status(201).json(product))
       .catch((error) => this.handleError(error, res));
   };

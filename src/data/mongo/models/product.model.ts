@@ -30,5 +30,12 @@ const productoSchema = new Schema({
   }
 });
 
+productoSchema.set('toJSON', {
+  virtuals: true,
+  versionKey: false,
+  transform: function(doc, ret, options) {
+    delete ret._id;
+  }
+})
 
 export const ProductModel = model('Product', productoSchema);
